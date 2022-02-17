@@ -2,12 +2,25 @@
 #include <ctime>
 using namespace std;
 
+/**
+ * @brief Funzione che riempie un vettore con un numero minore di 0
+ * 
+ * @param v vettore di tipo int
+ * @param n lunghezza vettore
+ */
 void Vettore_negativo_int(int v[], int n){
     for (int i = 0; i < n; i++){
         v[i] =  -1;
     }
 }
 
+/**
+ * @brief Funzione che restituisce la lunghezza di un vettore "per riconoscere i casonetti vuoti devono essere riempiti a un numero minore di 0"
+ * 
+ * @param v vettore di tipo int
+ * @param n lunghezza vettore
+ * @return int 
+ */
 int Lunghezza_vettore_int(int v[], int n){
     int cont = 0;
 
@@ -20,15 +33,28 @@ int Lunghezza_vettore_int(int v[], int n){
     return cont;
 }
 
-void Genratore_random_int(int v[], int lunghezza_vettore, int numero_max_rand){
+/**
+ * @brief Funzione che genera numeri randomici da 0 a num_max_rand
+ * 
+ * @param v vettore di tipo int
+ * @param lunghezza_vettore
+ * @param num_max_rand numero massimo generato (da 0 a max)
+ */
+void Genratore_random_int(int v[], int lunghezza_vettore, int num_max_rand){
     srand(time(NULL));
 
     for (int i = 0; i < lunghezza_vettore; i++){
-        int Random = rand()%numero_max_rand;
+        int Random = rand()%num_max_rand;
         v[i] = Random;
     }
 }
 
+/**
+ * @brief Funzione stampa vettore int
+ * 
+ * @param v vettore di tipo int
+ * @param n quantità cassonetti stampati
+ */
 void Stampa_Vettore_int(int v[], int n){
     for (int i = 0; i < n; i++){
         cout << v[i] << "\t";
@@ -36,6 +62,12 @@ void Stampa_Vettore_int(int v[], int n){
     cout << endl;
 }
 
+/**
+ * @brief Funzione stampa vettore char 
+ * 
+ * @param v vettore di tipo char
+ * @param n quantità cassonetti stampati
+ */
 void Stampa_Vettore_char(char v[], int n){
     for (int i = 0; i < n; i++){
         cout << v[i] << "\t";
@@ -43,6 +75,12 @@ void Stampa_Vettore_char(char v[], int n){
     cout << endl;
 }
 
+/**
+ * @brief Funzione che genera randomicamente una lettera MAIUSCOLA e inserisce il contenuto in un vettore di tipo char 
+ * 
+ * @param v vettore di tipo char
+ * @param lunghezza_vettore quantità char generati
+ */
 void Generatore_random_char(char v[], int lunghezza_vettore){
     srand(time(NULL));
     for (int i = 0; i < lunghezza_vettore; i++){
@@ -51,6 +89,15 @@ void Generatore_random_char(char v[], int lunghezza_vettore){
     }
 }
 
+/**
+ * @brief Funzione che conta i caratteri uguali tra due vettori di tipo char (v1[ ] e v2[ ]) \n 
+ * 
+ * 
+ * @param v1  vettore di tipo char
+ * @param v2  vettore di tipo char
+ * @param n   lunghezza del vettore più corto
+ * @return int caratteri uguali
+ */
 int Contatore_caratteri_uguali_char(char v1[], char v2[], int n){
     int conta = 0;
     int conta2 = 0;
@@ -83,6 +130,7 @@ int main(){
 
     Stampa_Vettore_char(vet1, 5);
     Stampa_Vettore_char(vet2, 5);
+
 
     int numero = Contatore_caratteri_uguali_char(vet1, vet2, 5);
 
