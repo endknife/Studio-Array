@@ -55,11 +55,26 @@ void Genratore_random_int(int v[], int lunghezza_vettore, int num_max_rand){
  * @param v vettore di tipo int
  * @param n quantità cassonetti stampati
  */
-void Stampa_Vettore_int(int v[], int n){
+void Stampa_vettore_int(int v[], int n){
     for (int i = 0; i < n; i++){
         cout << v[i] << "\t";
     }
     cout << endl;
+}
+
+/**
+ * @brief Funzione che inverte il vettore inserito
+ * 
+ * @param v vettore di tipo int
+ * @param n linghezza vettore
+ */
+void Inveriti_vettore_int(int v[], int n){
+    int Temp;
+    for (int i = 0; i < n/2; i++){
+        Temp = v[i];
+        v[i] = v[n-1-i];
+        v[n-1-i] = Temp;
+    }
 }
 
 /**
@@ -68,7 +83,7 @@ void Stampa_Vettore_int(int v[], int n){
  * @param v vettore di tipo char
  * @param n quantità cassonetti stampati
  */
-void Stampa_Vettore_char(char v[], int n){
+void Stampa_vettore_char(char v[], int n){
     for (int i = 0; i < n; i++){
         cout << v[i] << "\t";
     }
@@ -109,30 +124,30 @@ int Contatore_caratteri_uguali_char(char v1[], char v2[], int n){
             conta2 = conta;
             conta = 0;
         }
+        if (conta == n){
+            return 0;
+        }
     }
-    return conta;
+    if (conta2 > conta){
+        return conta2;
+    }else{
+        return conta;
+    }
 }
 
 int main(){
     const int N = 100;
     int vettore[N];
 
-    char vet1[N] = {'n', 'f', 'z', 'g', 't'};
-    char vet2[N] = {'n', 'f', 'z', 'g', 't'};
+    char vet1[N] = {'n', 't', 'z', 'g', 't', 's', 'c', 'i', 'a', 'o'};
+    char vet2[N] = {'n', 't', 'z', 'g', 't', 's', 'c', 'i', 'a', 'o'};
+    
 
-    /*
-    Generatore_random_char(vet, 10);
-    Stampa_Vettore_char(vet, 10);
-    cout << endl;
-    Generatore_random_char(vet2, 10);
-    Stampa_Vettore_char(vet2, 10);
-    */
-
-    Stampa_Vettore_char(vet1, 5);
-    Stampa_Vettore_char(vet2, 5);
+    Stampa_vettore_char(vet1, 10);
+    Stampa_vettore_char(vet2, 10);
 
 
-    int numero = Contatore_caratteri_uguali_char(vet1, vet2, 5);
+    int numero = Contatore_caratteri_uguali_char(vet1, vet2, 10);
 
     cout << numero;
 }
