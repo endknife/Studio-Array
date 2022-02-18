@@ -160,39 +160,34 @@ int Contatore_caratteri_uguali_char(char v1[], char v2[], int n){
  * @return 1 se ture 0 se false
  */
 int Controllo_tre_consonanti(char v[], int n){
-    int contatore = 0;
+    int cont = 0;
     int contatore2 = 0;
     for (int i = 0; i < n; i++){
-        if (v[i] != 'A' || v[i] != 'E' || v[i] != 'I' || v[i] != 'O'|| v[i] != 'U'){
-            cout << "contatore in for = " << contatore << endl;
-            contatore++;
-            
+        if (!(v[i] == 'A' || v[i] == 'E' || v[i] == 'I' || v[i] == 'O'|| v[i] == 'U')){
+            cont++;
         }
-        if ((v[i+1] == 'A' || v[i+1] == 'E' || v[i+1] == 'I' || v[i+1] == 'O'|| v[i+1] == 'U') && i+1 != n){
-            contatore2 = contatore;
-            contatore = 0;
+        if (v[i] == 'A' || v[i] == 'E' || v[i] == 'I' || v[i] == 'O'|| v[i] == 'U'){
+            if (cont > contatore2){
+                contatore2 = cont;
+            }
+            cont = 0;
         }
     }
 
-    if (contatore2 >= 3 || contatore >= 3){
+    if (contatore2 >= 3){
         return 1;
     }
     else{
         return 0;
     }
-    
-
-    cout << "contatore = " << contatore << endl;
-    cout << "contatore2 = " << contatore2 << endl;
 }
 
 int main(){
     system("cls");
     srand(time(NULL));
-    const int N = 7;
+    const int N = 9;
 
-    char vet1[N] = {'f', 'A', 't', 'f', 'A', 'd', 's'};
-    char vet2[N];
+    char vet1[N] = {'f', 't', 'A', 't', 'f', 'A', 'z', 'f', 'A'};
     
     Stampa_vettore_char(vet1, N);
 
