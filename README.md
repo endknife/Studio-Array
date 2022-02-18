@@ -1,12 +1,14 @@
 # Funzini per Array 
 Questo file contiene delle funzioni basilari per gli array
 FUNZIONI:
+
 PER VETTORI INT
   - riempimento di numeri minori a 0 (-1)
   - lunghezza vettore
   - generatore di numeri randomici
   - ribaltamento vettore
   - stampa vettore
+
 PER VETTORI CHAR
   - generatore di char randomici
   - contatore di caratteri uguali tra due vettori
