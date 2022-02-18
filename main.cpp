@@ -97,11 +97,28 @@ void Stampa_vettore_char(char v[], int n){
  * @param lunghezza_vettore quantità char generati
  */
 void Generatore_random_char(char v[], int lunghezza_vettore){
-    srand(time(NULL));
+    
     for (int i = 0; i < lunghezza_vettore; i++){
         int Random = 65+rand()%25;
         v[i] = (char)Random;
     }
+}
+
+/**
+ * @brief Funzione che controlla se c'è la presenza di una vocale maisucola
+ * 
+ * @param v vettore di tipo char
+ * @param n lunghezza vettore
+ * @return 1 if true 0 if false
+ */
+int Controlla_contenuto_vocale_maiuscola(char v[], int n){
+    int valore = 0;
+    for (int i = 0; i < n; i++){
+        if (v[i] == 'A' || v[i] == 'E' || v[i] == 'I' || v[i] == 'O'|| v[i] == 'U'){
+            valore = 1;
+        }
+    }
+    return valore;
 }
 
 /**
@@ -111,7 +128,7 @@ void Generatore_random_char(char v[], int lunghezza_vettore){
  * @param v1  vettore di tipo char
  * @param v2  vettore di tipo char
  * @param n   lunghezza del vettore più corto
- * @return int caratteri uguali
+ * @return int caratteri uguali. Se vettori uguali return 0.
  */
 int Contatore_caratteri_uguali_char(char v1[], char v2[], int n){
     int conta = 0;
@@ -135,19 +152,52 @@ int Contatore_caratteri_uguali_char(char v1[], char v2[], int n){
     }
 }
 
-int main(){
-    const int N = 100;
-    int vettore[N];
+/**
+ * @brief Funzione returna 1 se ci sono 3 consonanti di fila
+ * 
+ * @param v vettore di tipo char 
+ * @param n lunchezza vettore
+ * @return 1 se ture 0 se false
+ */
+int Controllo_tre_consonanti(char v[], int n){
+    int contatore = 0;
+    int contatore2 = 0;
+    for (int i = 0; i < n; i++){
+        if (v[i] != 'A' || v[i] != 'E' || v[i] != 'I' || v[i] != 'O'|| v[i] != 'U'){
+            cout << "contatore in for = " << contatore << endl;
+            contatore++;
+            
+        }
+        if ((v[i+1] == 'A' || v[i+1] == 'E' || v[i+1] == 'I' || v[i+1] == 'O'|| v[i+1] == 'U') && i+1 != n){
+            contatore2 = contatore;
+            contatore = 0;
+        }
+    }
 
-    char vet1[N] = {'n', 't', 'z', 'g', 't', 's', 'c', 'i', 'a', 'o'};
-    char vet2[N] = {'n', 't', 'z', 'g', 't', 's', 'c', 'i', 'a', 'o'};
+    if (contatore2 >= 3 || contatore >= 3){
+        return 1;
+    }
+    else{
+        return 0;
+    }
     
 
-    Stampa_vettore_char(vet1, 10);
-    Stampa_vettore_char(vet2, 10);
+    cout << "contatore = " << contatore << endl;
+    cout << "contatore2 = " << contatore2 << endl;
+}
 
+int main(){
+    system("cls");
+    srand(time(NULL));
+    const int N = 7;
 
-    int numero = Contatore_caratteri_uguali_char(vet1, vet2, 10);
+    char vet1[N] = {'f', 'A', 't', 'f', 'A', 'd', 's'};
+    char vet2[N];
+    
+    Stampa_vettore_char(vet1, N);
 
-    cout << numero;
+    int val = Controllo_tre_consonanti(vet1, N);
+
+    cout << val;
+
 }
