@@ -169,9 +169,16 @@ int Controllo_tre_consonanti(char v[], int n){
         if (v[i] == 'A' || v[i] == 'E' || v[i] == 'I' || v[i] == 'O'|| v[i] == 'U'){
             if (cont > contatore2){
                 contatore2 = cont;
+                cont = 0;
+            }else{
+                cont = 0;
             }
-            cont = 0;
+            
         }
+        cout << "Contatore: " << cont << endl;
+    }
+    if (cont > contatore2){
+        contatore2 = cont;
     }
 
     if (contatore2 >= 3){
@@ -182,17 +189,109 @@ int Controllo_tre_consonanti(char v[], int n){
     }
 }
 
+/**
+ * @brief Funzione che controlla se ci sonon doppie nel codice
+ * 
+ * @param v vettore di tipo char
+ * @param n lunghezza vettore
+ * @return int 1 if true 0 if flase
+ */
+int Controllo_doppia(char v[], int n){
+    for (int i = 0; i < n; i++){
+        if (v[i] == v[i+1] && i+1 != n){
+            return 1;
+        }
+    }
+    return 0;
+}
+
+/**
+ * @brief Funzione che ritorna 0 se non ci sono segni di separazione, invece se ci sono ritorna la quantità
+ * 
+ * @param v vettore di tipo char
+ * @param n lunghezza vettore
+ * @return int quantità segni di separzione
+ */
+int Controlla_segno_separazione(char v[], int n){
+    int cont = 0;
+    for (int i = 0; i < n; i++){
+        if(v[i] == '?' || v[i] == '!' || v[i] == '.' || v[i] == ';' || v[i] == ',' || v[i] == ' '){
+            cont++;
+        }
+    }
+    return cont;
+}
+
+/**
+ * @brief Funzione che sostituisce dei caratteri in un vettore con altri caratteri
+ * 
+ * @param v 
+ * @param n 
+ */
+void Cambia_sequenza_in_vettore(char v[], int n){
+    int contatore1 = 0;
+    int contatore2 = 0;
+    int inizio;
+    char check;
+    char v_riconosci[20];
+    char v_cambia[20];
+    cout << "Inserire - se vui interrompere la sequenza" << endl;
+    do{
+        cout << "Inserire lettera: ";
+        cin >> check;
+        if (check != '-'){
+            v_riconosci[contatore1] = check;
+            contatore1++;
+        }
+    }while(check != '-');
+
+    cout << "Inserire contenuto con cui vuoi rimpiazzare la sequenza" << endl;
+    do{
+        cout << "Inserire lettera: ";
+        cin >> check;
+        if (check != '-'){
+            v_cambia[contatore2] = check;
+            contatore2++;
+        }
+    }while(contatore2 != contatore1);
+    
+    for (int i = 0; i < n; i++){
+        if(v[i] == v_riconosci[0]){
+            inizio = 0;
+            for (int j = 0; j < contatore1; j++){
+                if(v[i+inizio] == v_riconosci[j]){
+                    inizio++;
+                }
+            }
+            if(inizio==contatore1){
+                for (int j = 0; j < inizio; j++){
+                    v[i+j] = v_cambia[j];
+                }
+            }else{
+                cout << "Non trovo la parte che vuoi sostituire: ";
+                for (int k = 0; k < contatore1; k++){
+                    cout << v_cambia[k] << " ";
+                }
+                cout << endl;
+                for (int k = 0; k < n; k++){
+                    cout << v[k] << " ";
+                }
+            }
+        }
+    }
+}
+
 int main(){
     system("cls");
     srand(time(NULL));
-    const int N = 9;
+    const int N = 7;
 
-    char vet1[N] = {'f', 't', 'A', 't', 'f', 'A', 'z', 'f', 'A'};
-    
+    char vet1[N] = {'B', 'o', 'l', 'z', 'a', 'n', 'o'};
+
+    /// Generatore_random_char(vet1, N);
     Stampa_vettore_char(vet1, N);
 
-    int val = Controllo_tre_consonanti(vet1, N);
-
-    cout << val;
+    Cambia_sequenza_in_vettore(vet1, N);
+    Stampa_vettore_char(vet1, N);
 
 }
