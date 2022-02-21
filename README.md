@@ -12,6 +12,11 @@ PER VETTORI INT
 PER VETTORI CHAR
   - generatore di char randomici
   - contatore di caratteri uguali tra due vettori
+  - controllo se c'è almeno una vocale
+  - controllo se ci sono tre consonati di fila
+  - controllo se ci sono segni di separazione
+  - controllo se ci sono doppie
+  - swapp di una parte di vettore
   - stampa vettore
 
 Non è niente di speciale, però aggiungerò altre funzioni molto utili
