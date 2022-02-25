@@ -281,6 +281,34 @@ void Cambia_sequenza_in_vettore(char v[], int n){
     }
 }
 
+void Oggi_piove(){
+    char piove[10] = {'o', 'g', 'g', 'i', ' ', 'p', 'i', 'o', 'v', 'e'};
+    char tempo[21] = {'d', 'o', 'm', 'a', 'n', 'i', ' ', 's', 'a', 'r', 'a', ' ', 'b', 'e', 'l', ' ', 't', 'e', 'm', 'p', 'o'};   
+
+    char fusione[31];
+
+    for (int i = 0; i < 10; i++){
+        piove[i] = piove[i]-32;
+    }
+
+    for (int i = 0; i < 31; i++){
+        if (i < 10){
+            fusione[i] = piove[i];
+        }else{
+            fusione[i] = tempo[i-10];
+        }
+    }
+
+    for (int i = 0; i < 31; i++){
+        if (fusione[i] == 'a' || fusione[i] == 'e' || fusione[i] == 'o' || fusione[i] == 'u' || fusione[i] == 'A' || fusione[i] == 'E' || fusione[i] == 'I' || fusione[i] == 'O' || fusione[i] == 'U'){
+            fusione[i] = 'i';
+        }
+        cout << fusione[i];
+    }
+
+   
+}
+
 int main(){
     system("cls");
     srand(time(NULL));
@@ -288,10 +316,6 @@ int main(){
 
     char vet1[N] = {'B', 'o', 'l', 'z', 'a', 'n', 'o'};
 
-    /// Generatore_random_char(vet1, N);
-    Stampa_vettore_char(vet1, N);
-
-    Cambia_sequenza_in_vettore(vet1, N);
-    Stampa_vettore_char(vet1, N);
+    Oggi_piove();
 
 }
